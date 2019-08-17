@@ -1,0 +1,352 @@
+// IMPORTS
+@import "../variables";
+//colors
+$white: #fff;
+$black_90: rgba(0, 0, 0, 0.9);
+$black: #000;
+$color_bon_jour_approx: #dde0e5;
+
+//fonts
+$font_0: Roboto;
+$font_1: OpenSans;
+$font_2: Open Sans;
+$font_3: Verdana;
+$font_4: Georgia;
+$font_5: Serif;
+
+//urls
+$url_0: url(../img/player/header_bg-top.png);
+$url_1: url(../img/player/header_bg.png);
+$url_2: url(../img/player/footer_bg.png);
+$url_3: url(../img/player/logo.png);
+$url_4: url(../img/player/play.png);
+$url_5: url(../img/player/play-hover.png);
+$url_6: url(../img/player/play-press.png);
+$url_7: url(../img/player/pause.png);
+$url_8: url(../img/player/pause-hover.png);
+$url_9: url(../img/player/timeline_bg_progress.png);
+$url_10: url(../img/player/timeline_indicator.png);
+$url_11: url(../img/player/timeline_bg_track.png);
+$url_12: url(../img/player/ic_media_route_on_custom.png);
+$url_13: url(../img/player/ic_media_route_off_custom.png);
+$url_14: url(../img/player/audio_off.png);
+$url_15: url(../img/player/audio_on.png);
+$url_16: url(../img/player/audio_bg.png);
+$url_17: url(../img/player/audio_bg_track.png);
+$url_18: url(../img/player/audio_indicator.png);
+$url_19: url(../img/player/audio_bg_level.png);
+$url_20: url(../img/player/fullscreen_expand.png);
+$url_21: url(../img/player/fullscreen_collapse.png);
+
+$player-height: 300px;
+
+// COMPONENT STYLES
+madness-player{
+    display: block;
+    width: 100%;
+    #video_image {
+        margin-right: auto;
+        margin-bottom: 0;
+        width: 100%;
+        height: $player-height;
+    }
+    #video_image_overlay {
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 100%;
+        height: $player-height;
+        background: linear-gradient(to top, $black_90, rgba(0, 0, 0, 0) 72%, rgba(0, 0, 0, 0) 100% );
+        z-index: 0;
+        position: absolute;
+        display: none;
+    }
+    #video_element {
+        display: none;
+        margin-right: auto;
+        width: 100%;
+        height: $player-height;
+        background-color: $black;
+    }
+    #media_control {
+        position: relative;
+        width: 100%;
+        height: 60px;
+        z-index: 1000;
+        margin: -60px 0 0 0;
+        padding: 0;
+        opacity: 0.7;
+        background-color: $black;
+        font-family: $font_0, $font_2, $font_3, $font_4, $font_5;
+        transition: opacity 1s;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+    #play {
+        margin: 10px 20px 10px 10px;
+        float: left;
+        width: 65px;
+        height: 40px;
+        background-image: $url_4;
+        &:hover {
+            background-image: $url_5;
+        }
+        &:press {
+            background-image: $url_6;
+        }
+    }
+    #pause {
+        display: none;
+        margin: 10px 20px 10px 10px;
+        float: left;
+        width: 65px;
+        height: 40px;
+        background-image: $url_7;
+        &:hover {
+            background-image: $url_8;
+        }
+    }
+    .button {
+        margin: 5px;
+        font-size: 100%;
+        font-family: $font_0, $font_2, $font_3, $font_4, $font_5;
+    }
+    .volume {
+        width: 60px;
+        margin-left: 8px;
+    }
+    .ion-ios-skipforward {
+        position: absolute;
+        left: 110px;
+        top: 15px;
+        color: #fff;
+        font-size: 32px;
+    }
+    .ion-code-working {
+        position: absolute;
+        right: 117px;
+        top: 11px;
+        color: #fff;
+        font-size: 32px;
+    }
+    .ion-close-circled {
+        color: #fff;
+        position: absolute;
+        top: 11px;
+        right: 30px;
+        font-size: 32px;
+    }
+    #muteText {
+        width: 30px;
+        margin-left: 3px;
+    }
+    .muteButton {
+        font-size: 110%;
+        font-family: $font_0, $font_2, $font_3, $font_4, $font_5;
+    }
+    .imageIcon {
+        padding: 3px 0 0;
+        width: 25px;
+    }
+    #progress {
+        margin: 20px 0 10px -620px;
+        float: left;
+        width: 1px;
+        height: 36px;
+        z-index: 10;
+        background-image: $url_9;
+        background-repeat: repeat-x;
+    }
+    #progress_indicator {
+        margin: 20px 0 10px -620px;
+        float: left;
+        draggable: true;
+        width: 6px;
+        height: 36px;
+        z-index: 1000;
+        background-image: $url_10;
+        background-repeat: repeat-x;
+    }
+    #progress_bg {
+        margin: 20px 20px 10px 30px;
+        float: left;
+        width: 600px;
+        height: 36px;
+        background-image: $url_11;
+        background-repeat: repeat-x;
+    }
+    #casticonactive {
+        float: right;
+        margin: 10px 17px 14px 0;
+        width: 32px;
+        height: 32px;
+        display: none;
+        background-image: $url_12;
+    }
+    #casticonidle {
+        float: right;
+        width: 32px;
+        height: 32px;
+        margin: 10px 17px 14px 0;
+        display: none;
+        background-image: $url_13;
+    }
+    #audio_off {
+        float: right;
+        margin: 10px 10px 10px 0;
+        width: 32px;
+        height: 32px;
+        display: none;
+        background-image: $url_14;
+    }
+    #audio_on {
+        float: right;
+        width: 32px;
+        height: 32px;
+        margin: 10px 10px 10px 0;
+        display: block;
+        background-image: $url_15;
+    }
+    #audio_bg {
+        float: right;
+        opacity: 0.1;
+        width: 41px;
+        height: 124px;
+        margin: -115px 8px -10px 0;
+        display: block;
+        background-image: $url_16;
+        position: relative;
+        z-index: 10;
+    }
+    #audio_bg_track {
+        float: right;
+        opacity: 0.0;
+        width: 16px;
+        height: 100px;
+        margin: -100px 20px -30px 0;
+        display: block;
+        background-image: $url_17;
+        position: relative;
+        z-index: 1000;
+    }
+    #audio_indicator {
+        float: right;
+        opacity: 0.0;
+        width: 16px;
+        height: 5px;
+        margin: -50px 20px -30px 0;
+        display: none;
+        background-image: $url_18;
+        position: relative;
+        z-index: 1000;
+    }
+    #audio_bg_level {
+        float: right;
+        opacity: 0.0;
+        width: 16px;
+        height: 50px;
+        margin: -50px 20px -30px 0;
+        display: block;
+        background-image: $url_19;
+        position: relative;
+        z-index: 1000;
+    }
+    #fullscreen_expand {
+        float: right;
+        width: 32px;
+        height: 32px;
+        margin: 10px 20px 10px 0;
+        display: block;
+        background-image: $url_20;
+    }
+    #fullscreen_collapse {
+        float: right;
+        width: 32px;
+        height: 32px;
+        margin: 10px 20px 10px 0;
+        display: none;
+        background-image: $url_21;
+    }
+    #duration {
+        float: right;
+        color: $white;
+        width: 60px;
+        height: 32px;
+        margin: 20px 15px 10px;
+        display: block;
+    }
+    #carousel {
+        width: 990px;
+        margin: 20px 10px 10px 40px;
+    }
+    .thumb {
+        float: left;
+        margin: 10px 10px 10px 0;
+    }
+    .thumbnail {
+        margin-right: 10px;
+        width: 225px;
+        height: 127px;
+    }
+    .vertical {
+    }
+    div.imageSub {
+        position: relative;
+        img {
+            z-index: 1;
+        }
+        div {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0;
+            &.blackbg {
+                z-index: 2000;
+                bottom: 60px;
+                left: 300px;
+                width: 400px;
+                height: 30px;
+                color: $black;
+                background-color: $black;
+                filter: alpha(opacity=50);
+                opacity: 0.5;
+                font-size: 120%;
+                display: none;
+                padding: 10px;
+            }
+            &.label {
+                z-index: 3000;
+                bottom: 60px;
+                left: 300px;
+                width: 400px;
+                height: 30px;
+                color: $white;
+                font-size: 120%;
+                display: none;
+                padding: 10px;
+            }
+        }
+    }
+
+    @media (max-width: $screen-xl) {
+
+    }
+
+    @media (max-width: $screen-lg) {
+
+    }
+
+    @media (max-width: $screen-md) {
+
+    }
+
+    @media (max-width: $screen-sm) {
+
+    }
+
+    @media (max-width: $screen-xs) {
+
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "rules": {
+        "review": {
+            ".read": "root.child('user/' + auth.uid + '/role').val() == 'admin'",
+            ".write": "root.child('user/' + auth.uid + '/role').val() == 'admin'",
+            "$animeId": {
+                ".read": "root.child('user/' + auth.uid + '/role').val() == 'admin'",
+                ".write": "root.child('user/' + auth.uid + '/role').val() == 'admin'",
+                "seasons": {
+                    ".read": "root.child('user/' + auth.uid + '/role').val() == 'admin'",
+                    ".write": "root.child('user/' + auth.uid + '/role').val() == 'admin'"
+                }
+            }
+        },
+        "anime": {
+            ".read": "auth != null",
+            ".write": "auth != null"
+        },
+        "user": {
+            ".read": true,
+            "$uid": {
+                ".read": "auth.uid == $uid || root.child('user/' + auth.uid + '/role').val() == 'admin'",
+                ".write": "auth.uid == $uid || root.child('user/' + auth.uid + '/role').val() == 'admin'"
+            }
+        }
+    }
+}

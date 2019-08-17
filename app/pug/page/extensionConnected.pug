@@ -1,0 +1,6 @@
+ion-view.page-extensionConnected(view-title='Connected')
+    ion-content
+        img(src='./img/icon.png')
+        h2 {{ctrl.user.name}}
+        .padding
+            button.button.button-block.button-positive.icon-right.ion-log-out(ng-click='ctrl.disconnect()') Disconnect

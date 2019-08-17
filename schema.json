@@ -1,0 +1,23 @@
+{
+    "anime": [
+        {
+            "name": "Naruto",
+            "episodes": [
+                {
+                    "number": 216,
+                    "sources": {
+                        "kissanime": "http://kissanime.io/Anime/Naruto-Dub/Episode-216-The-Targeted-Shukaku?id=104083"
+                    },
+                    "video": "https://r8---sn-81fpgxaxnn-qxoe.googlevideo.com/videoplayback?requiressl=yes&id=6cc316965a71785d&itag=22&source=webdrive&ttl=transient&app=explorer&ip=2600:100a:b12b:f2cc:4c31:5a22:127f:bd1f&ipbits=0&expire=1476518339&sparams=expire,id,ip,ipbits,itag,mm,mn,ms,mv,pcm2cms,pl,requiressl,source,ttl&signature=63E41855FBC0E5F26FCE2C07038136FD33F60AC2.3EB7C6EB4DB175DD52A98083830CF54783B8E1BC&key=cms1&pl=44&cms_redirect=yes&mm=31&mn=sn-81fpgxaxnn-qxoe&ms=au&mt=1476508127&mv=m&pcm2cms=yes"
+                }
+            ]
+        }
+    ],
+    "queue": [
+        {
+            "anime": 0,
+            "episode": 0,
+            "link": "http://kissanime.io/Anime/Naruto-Dub/Episode-216-The-Targeted-Shukaku?id=104083"
+        }
+    ]
+}

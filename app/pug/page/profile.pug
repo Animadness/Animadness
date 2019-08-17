@@ -1,0 +1,40 @@
+ion-view(view-title='Profile')
+    ion-content.has-header(class='state-profile')
+        .row
+            .col-xs-12.col-md-6
+                .card
+                    ion-list
+                        ion-item.item-divider User Info
+                        ion-item.item-input.item-stacked-label
+                            label.input-label Name
+                            input(
+                                type="text"
+                                placeholder="John Doe"
+                                ng-model="ctrl.user.name"
+                            )
+                        ion-item.item-toggle
+                            | Dubbed by Default
+                            label.toggle.toggle-calm
+                                input(type='checkbox' ng-model='ctrl.user.dubbed')
+                                .track
+                                    .handle
+                        //- ion-item.item-toggle
+                        //-     | Watch with Me
+                        //-     label.toggle.toggle-calm
+                        //-         input(type='checkbox' ng-model='ctrl.user.sharing')
+                        //-         .track
+                        //-             .handle
+            .col-xs-12.col-md-6
+                .card
+                    ion-list
+                        ion-item.item-divider Extension Setup
+                        ion-item.item-icon-right.download(ng-click='ctrl.installExtension()')
+                            h2 Download Extension
+                            p This is required to get the links for episodes
+                            i.icon.ion-android-download
+                        ion-item.item-icon-right.connect(ng-click='ctrl.connectExtension()')
+                            h2 Connect Extension
+                            p Use this to connect your account to the extension
+                            i.icon.ion-outlet
+        .padding
+            button.button.button-positive.button-block.icon-right.ion-log-out(ng-click='ctrl.logout()' ng-hide='ctrl.setup') Log Out

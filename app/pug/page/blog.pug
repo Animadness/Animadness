@@ -1,0 +1,16 @@
+ion-view.page-blog(view-title='Blog')
+    ion-content(padding="true")
+        .card(ng-repeat='post in ctrl.posts')
+            .banner(
+                ng-if='post.image'
+                ng-style='{backgroundImage: "url(" + post.image + ")"}'
+            )
+            span.badge(ng-class='{"has-banner": post.image}' ng-bind="ctrl.formatDate(post.post_date) | date:'MM/dd/yyyy'")
+            h2 {{post.title}}
+            .content(ng-bind-html='ctrl.render(post.content)')
+        ion-infinite-scroll(
+            ng-if="ctrl.currentPage < ctrl.lastPage"
+            icon="ion-loading-a"
+            on-infinite="ctrl.nextPage()"
+            distance="1%"
+        )

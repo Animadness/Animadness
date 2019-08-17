@@ -1,0 +1,34 @@
+ion-modal-view.modal-watchWithMe
+    ion-content
+        .banner
+            a.button.button-icon.ion-close(ng-click="closeWatchWithModal()")
+            .row
+                .col-xs-12.col-sm-4
+                    i.icon.ion-radio-waves
+                .col-xs-12.col-sm-8
+                    h2 Watch with Me
+                    p Now you can watch anime with your friends, no matter where they live or make new ones watching anime.  Just click one of the options below to start a new lobby and send the link to your friends. 
+        .share-wrapper
+            .info 
+                ion-toggle.item-icon-left(
+                    ng-model="online" 
+                    toggle-class="toggle-calm"
+                    ng-change="toggleWatchWithMe(online)"
+                )
+                    i.icon(ng-class='{"ion-link": link, "ion-help-circled": !link}').ion-link
+                    a(href='{{link}}' target='_blank') {{link || 'No lobby started yet...'}}
+            .card
+                ion-list
+                    ion-item.item-icon-right(ng-click="share('facebook')")
+                        h2 Share on Facebook
+                        i.icon.ion-social-facebook 
+                    ion-item.item-icon-right(ng-click="share('twitter')")
+                        h2 Share on Twitter
+                        i.icon.ion-social-twitter 
+                    ion-item.item-icon-right(ng-click="share('google')")
+                        h2 Share on Google +
+                        i.icon.ion-social-google 
+                    ion-item.item-icon-right.clipboard(ng-click='' data-clipboard-text="{{link}}")
+                        h2 Copy to Clipboard
+                        i.icon.ion-clipboard
+                    

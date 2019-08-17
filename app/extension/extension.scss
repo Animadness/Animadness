@@ -1,0 +1,10 @@
+@import '../scss/libraries';
+@import '../scss/layout/body';
+
+body {
+    width: 320px;
+    height: 400px;
+}
+
+@import '../scss/page/extensionSetup';
+@import '../scss/page/extensionConnected';

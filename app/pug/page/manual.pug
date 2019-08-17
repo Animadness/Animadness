@@ -1,0 +1,9 @@
+ion-view.page-manual(view-title='manual')
+    ion-content
+        .card
+            label.item.item-input
+                input(type='text' placeholder='Url to Video' ng-model='link')
+            madness-player(
+                src="link"
+                cast='true'
+            )

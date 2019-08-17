@@ -1,0 +1,73 @@
+ion-view(view-title='Add Anime' cache-view="false")
+    ion-content.state-animeForm.has-button
+        form.card(
+            name="animeForm" 
+            ng-submit="ctrl.lookupAnime()"
+            novalidate=""
+        )
+            ion-lists
+                ion-item.item-input.item-stacked-label.item-icon-right
+                    span.input-label
+                        | Search Anime
+                    input(
+                        type="text"
+                        ng-model="ctrl.query"
+                        placeholder="Search Anime"
+                        required=""
+                    )
+                    button.button-clear.button-icon.icon.ion-android-search(type="submit" ng-disabled="animeForm.$invalid")
+        .row(ng-show='ctrl.showResults && ctrl.query.length')
+            .col-xs-12.col-sm-12.col-md-6#series
+                .card
+                    ion-list
+                        ion-item.item-divider Kissanime Results
+                        ion-item.item-icon-right(
+                            ng-repeat='series in ctrl.results'
+                            ng-click='ctrl.selectAnime(series)'
+                            ng-class='{"active": ctrl.selectedDub == series || ctrl.selectedSub == series}'
+                        )
+                            h2 {{series.name}}
+                            span.badge(ng-show='ctrl.selectedDub == series') Dub
+                            span.badge(ng-show='ctrl.selectedSub == series') Sub
+                            i.icon.ion-checkmark-circled
+                .card
+                    ion-list
+                        ion-item.item-divider 9anime Results
+                        ion-item.item-icon-right(
+                            ng-repeat='backup in ctrl.backups'
+                            ng-click='ctrl.selectBackup(backup)'
+                            ng-class='{"active": ctrl.backupDub == backup || ctrl.backupSub == backup}'
+                        )
+                            h2 {{backup.name}}
+                            span.badge(ng-show='ctrl.backupDub == backup') Dub
+                            span.badge(ng-show='ctrl.backupSub == backup') Sub
+                            i.icon.ion-checkmark-circled
+            .col-xs-12.col-sm-12.col-md-6#fillers
+                .card
+                    ion-list
+                        ion-item.item-divider TV Info
+                        ion-item.item-icon-right(
+                            ng-repeat='show in ctrl.tv.results'
+                            ng-class='{"active": ctrl.selectedShow == show}'
+                            ng-click='ctrl.selectShow(show)'
+                        )
+                            h2 {{show.name}}
+                            i.icon.ion-checkmark-circled
+                .card
+                    ion-list
+                        ion-item.item-divider Filler Results
+                        ion-item.item-icon-right(
+                            ng-repeat='filler in ctrl.fillers | filter:ctrl.query'
+                            ng-class='{"active": ctrl.selectedFiller == filler}'
+                            ng-click='ctrl.selectFiller(filler)'
+                        ) 
+                            h2 {{filler.name}}
+                            i.icon.ion-checkmark-circled
+    button.theme-positive(
+        mfb-menu 
+        position='br' 
+        resting-icon='ion-arrow-right-c' 
+        active-icon='ion-arrow-right-c' 
+        ng-click='ctrl.saveAnime()'
+        ng-show='$root.session.profile.role === "admin"'
+    )

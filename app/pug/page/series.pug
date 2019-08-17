@@ -1,0 +1,127 @@
+ion-view(cache-view="false")
+    ion-nav-title {{ctrl.series.name}}
+    guest-bar
+    ion-content.state-series.has-buttons(overflow-scroll="false" ng-class='{"has-subheader": $root.guest}')
+        madness-player(
+            src="ctrl.videoPlaying.video[ctrl.user.dubbed ? 'dub' : 'sub'] ? ctrl.videoPlaying.video[ctrl.user.dubbed ? 'dub' : 'sub'] : ctrl.videoPlaying.video['sub']"
+            title='"Episode" + ctrl.videoPlaying.number + " - " + ctrl.videoPlaying.name'
+            thumb="'./img/icon.png'"
+            ng-show="ctrl.videoPlaying.video"
+            skip='skipEpisode'
+            watch='ctrl.user.sharing'
+            cast='true'
+        )
+        .banner(ng-hide='ctrl.videoPlaying.video' ng-style='{backgroundImage:"url(" + ctrl.banner + ")"}')
+            ion-scroll(direction='y' overflow-scroll='false')
+                #support
+                    .row.middle-xs
+                        a.col-xs.provider(href='http://kissanime.ru' target="_blank")
+                            h2 Media from
+                            img(src='./img/kissanime.png')
+                        a.col-xs.patreon(href='https://patreon.com/madnesslabs' target='_blank')
+                            h2 Support us on
+                            img(src='./img/patreon.png')
+                .description 
+                    .tags(ng-if='ctrl.series.genres.length')
+                        a.badge.badge-calm(ui-sref='anime({genre:genre})' ng-repeat='genre in ctrl.series.genres') {{genre}}
+                    | {{ctrl.series.description}}
+                    .approve(ng-show='$root.session.profile.role === "admin" && ctrl.baseRef == "review/"')
+                        .button.button-calm.button-outline.icon-left.ion-calendar(
+                            mobiscroll-datetime="scheduled" 
+                            mobiscroll-options="ctrl.scheduleOpts" 
+                            mobiscroll-instance="schedule" 
+                        ) {{ctrl.scheduled || 'Schedule'}}
+                        .button.button-calm.button-outline.icon-left.ion-chatbubble(ng-click='ctrl.socialPoster.show()') Message Settings
+        ion-scroll#seasons(direction='x' ng-if='!ctrl.currentSeason' overflow-scroll='false' ng-class='{"playing": ctrl.videoPlaying.video}')
+            .bubble(ng-click='ctrl.quickPlay()' ng-hide='ctrl.videoPlaying.video || $root.guest')
+                span(ng-if='ctrl.play.number') {{ctrl.play.number}}
+                .image.icon(ng-class='ctrl.play.icon')
+                h2 {{ctrl.play.title}}
+            .bubble(
+                ng-repeat='(seasonNumber, season) in ctrl.series.seasons track by seasonNumber'
+                ng-click='ctrl.selectSeason(seasonNumber, season)'
+                ng-if='ctrl.episodeCount(season)'
+            )
+                span {{ctrl.episodeCount(season)}}
+                .image(
+                    ng-style='{"background-image": "url(" + season.image + ")"}'
+                    ng-class='{"icon": !season.image, "ion-ios-film": !season.image }'
+                )
+                h2 Season {{seasonNumber}}
+        #episodes(ng-if='ctrl.currentSeason' ng-class='{"playing": ctrl.videoPlaying.video}')
+            .card
+                ion-list
+                    ion-item.item-divider.item-icon-left(ng-click='ctrl.viewSeasons()')
+                        i.icon.ion-arrow-left-c
+                        | Season {{ctrl.currentSeason.number}}
+                    ion-item.item-icon-right(
+                        ng-repeat="episode in ctrl.currentSeason.episodes track by $index"
+                        ng-click="$root.guest ? null : ctrl.loadVideo(episode, false)"
+                        ng-if="episode.name.length"
+                    )
+                        span.badge {{episode.number}}
+                        h2 {{episode.name}}
+                        span.badge {{episode.canon ? null : 'filler'}}
+                        i.icon(
+                            ng-class='{"ion-play": !ctrl.user.history[ctrl.series.$id][episode.number], "ion-eye": ctrl.user.history[ctrl.series.$id][episode.number], "positive": ctrl.user.history[ctrl.series.$id][episode.number] }',
+                            ng-click='ctrl.unwatch($event, episode)'
+                            ng-if='!$root.guest'
+                        )
+    a#publisher(ng-href='{{ctrl.series.homepage}}' target='_blank' ng-if='ctrl.series.homepage')
+        small We don't own or claim any rights to this media, please support the official release
+        .padding
+            p {{ctrl.series.homepage}}
+    button.theme-positive(
+        mfb-menu 
+        position='br' 
+        resting-icon='ion-checkmark' 
+        active-icon='ion-checkmark' 
+        ng-click='ctrl.approveAnime()'
+        ng-show='$root.session.profile.role === "admin" && ctrl.baseRef == "review/"'
+    )
+    button.theme-positive(
+        mfb-menu 
+        position='bl' 
+        resting-icon='ion-edit' 
+        active-icon='ion-edit' 
+        ng-click='ctrl.edit()'
+        ng-show='$root.session.profile.role === "admin"'
+    )
+    nav(
+        mfb-menu=''
+        position='br'
+        resting-icon='ion-android-share-alt'
+        active-icon='ion-close-round'
+        toggling-method='click'
+        effect='zoomin'
+        label='Close'
+        ng-show='ctrl.baseRef == "anime/"'
+    )
+        button(
+            mfb-button=''
+            icon='ion-social-facebook'
+            label='Facebook'
+            ng-click="$root.openLink('https://www.facebook.com/sharer/sharer.php?u=' + ctrl.share.link + '&title=' + ctrl.share.title + '&description=' + ctrl.share.text + '&picture=' + ctrl.share.image, 'facebook-share-dialog', 'width=626,height=436')"
+            mfb-button-close
+        )
+        button(
+            mfb-button=''
+            icon='ion-social-twitter'
+            label='Twitter'
+            ng-click="$root.openLink('https://twitter.com/intent/tweet?text=' + ctrl.share.title + '&url=' + ctrl.share.link , null,  'width=626,height=436')"
+            mfb-button-close
+        )
+        button(
+            mfb-button=''
+            icon='ion-social-google'
+            label='Google'
+            ng-click="$root.openLink('https://plus.google.com/share?url=' + ctrl.share.link, null, 'width=500,height=800')"
+            mfb-button-close
+        )
+        //- button(
+        //-     mfb-button=''
+        //-     icon='ion-radio-waves'
+        //-     label='Watch with Me'
+        //-     ng-click="ctrl.openWatchWithMe()"
+        //-     mfb-button-close
+        //- )

@@ -1,0 +1,27 @@
+.imageSub
+    // Put Your Image Width
+    #playerstatebg.blackbg IDLE
+    #playerstate.label IDLE
+    img#video_image(ng-src='{{thumb}}')
+    #video_image_overlay
+    video#video_element
+        source(ng-src="src" type="video/mp4")
+#media_control
+    #play(ng-click="play()" ng-hide='showSeek || time')
+    i.icon.ion-ios-skipforward(ng-click="skip()" ng-hide='showSeek || time')
+    #pause(ng-click="pause()" ng-hide='showSeek || time')
+    #progress_bg(ng-click="seek($event)" ng-show='showSeek')
+    #progress(ng-click="seek($event)" ng-show='showSeek')
+    #progress_indicator(ng-show='showSeek')
+    i.icon.ion-code-working(ng-click='showSeek = true' ng-hide='showSeek')
+    i.icon.ion-close-circled(ng-click='showSeek = false' ng-show='showSeek')
+    #fullscreen_expand(ng-click="openFullscreen()" ng-hide="showSeek")
+    #fullscreen_collapse(ng-click="closeFullscreen()" ng-hide='showSeek')
+    #casticonactive(ng-click="stopCast()" ng-hide='showSeek')
+    #casticonidle(ng-click="startCast()" ng-hide='showSeek')
+    //- #audio_bg
+    //- #audio_bg_track
+    //- #audio_indicator
+    //- #audio_bg_level
+    //- #audio_on
+    //- #audio_off

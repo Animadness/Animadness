@@ -1,0 +1,12 @@
+ion-view.page-watch(view-title='watch')
+    ion-content
+        madness-player(
+            src="ctrl.videoPlaying.link"
+            title='"Episode" + ctrl.videoPlaying.number + " - " + ctrl.videoPlaying.name'
+            thumb="'./img/icon.png'"
+            time="ctrl.videoPlaying.time + 1"
+        )
+    .card
+        ion-list
+            ion-item.item-avatar
+                

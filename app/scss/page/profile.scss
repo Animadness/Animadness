@@ -1,0 +1,35 @@
+// IMPORTS
+@import "../variables";
+
+// PAGE STYLES
+.state-profile{
+    .connect, .download  {
+        &:hover {
+            color: $theme-secondary;
+            cursor: pointer;
+
+            h2 {
+                color: $theme-secondary;
+            }
+        }
+    }
+    @media (max-width: $screen-xl) {
+
+    }
+
+    @media (max-width: $screen-lg) {
+
+    }
+
+    @media (max-width: $screen-md) {
+
+    }
+
+    @media (max-width: $screen-sm) {
+
+    }
+
+    @media (max-width: $screen-xs) {
+
+    }
+}

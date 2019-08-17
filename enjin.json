@@ -1,0 +1,294 @@
+{
+    "name": "Animadness",
+    "type": "madnessionic",
+    "description": "Let's Binge Anime! ^_^",
+    "author": {
+        "name": "Madness Labs",
+        "email": "info@MadnessLabs.net",
+        "url": "https://MadnessLabs.net"
+    },
+    "repo": "https://github.com/madnesslabs/madnessionic",
+    "root": "www/",
+    "templates": "templates/",
+    "mobile": false,
+    "local": true,
+    "debug": true,
+    "url": "https://animadness.net",
+    "proxy": "animadness.dev",
+    "version": "1.4.1",
+    "defaultRoute": "anime",
+    "routes": [{
+        "state": "login",
+        "url": "/login",
+        "templateUrl": "html/page/login.html",
+        "controller": "Animadness.LoginController as ctrl"
+    }, {
+        "state": "home",
+        "url": "/home",
+        "templateUrl": "html/page/home.html",
+        "controller": "Animadness.HomeController as ctrl",
+        "resolve": "AuthResolver"
+    }, {
+        "state": "profile",
+        "url": "/profile?setup",
+        "templateUrl": "html/page/profile.html",
+        "controller": "Animadness.ProfileController as ctrl",
+        "resolve": "AuthResolver"
+    }, {
+        "state": "anime",
+        "url": "/anime?genre",
+        "templateUrl": "html/page/anime.html",
+        "controller": "Animadness.AnimeController as ctrl"
+    }, {
+        "state": "series",
+        "url": "/anime/:seriesId?review&season",
+        "templateUrl": "html/page/series.html",
+        "controller": "Animadness.SeriesController as ctrl"
+    }, {
+        "state": "animeForm",
+        "url": "/add",
+        "templateUrl": "html/page/animeForm.html",
+        "controller": "Animadness.AnimeFormController as ctrl",
+        "resolve": "AuthResolver"
+    }, {
+        "state": "watchWithMe",
+        "url": "/watch/:user",
+        "templateUrl": "html/page/watch.html",
+        "controller": "Animadness.WatchController",
+        "controllerAs": "ctrl"
+    }, {
+        "state": "blog",
+        "url": "/blog",
+        "templateUrl": "html/page/blog.html",
+        "controller": "Animadness.BlogController",
+        "controllerAs": "ctrl"
+    }, {
+        "state": "post",
+        "url": "/post",
+        "templateUrl": "html/page/post.html",
+        "controller": "Animadness.PostController",
+        "controllerAs": "ctrl"
+    }, {
+        "state": "manual",
+        "url": "/manual",
+        "templateUrl": "html/page/manual.html",
+        "controller": "Animadness.ManualController",
+        "controllerAs": "ctrl"
+    }],
+    "plugins": [
+        "ionic",
+        "ngCordova",
+        "ng-mfb",
+        "firebase",
+        "angulartics",
+        "angulartics.google.analytics",
+        "ngCordovaOauth",
+        "mobiscroll-datetime"
+    ],
+    "google": {
+        "analytics": {
+            "key": false
+        },
+        "chromecast": {
+            "applicationId": "1218C96F"
+        },
+        "firebase": {
+            "apiKey": "AIzaSyAO8OlrdGsA1SPyUMJDnl8xrNg4HkAj3uY",
+            "authDomain": "animadnessdev.firebaseapp.com",
+            "databaseURL": "https://animadnessdev.firebaseio.com",
+            "storageBucket": "animadnessdev.appspot.com",
+            "messagingSenderId": "659934185356"
+        }
+    },
+    "api": {
+        "host": "https://api.animadness.net/v1/",
+        "moviesDB": {
+            "url": "https://api.themoviedb.org/3/",
+            "apiKey": "8287beeab4bb6c2c4f2b74b1f0212b13",
+            "lang": "en-US",
+            "imageUrl": "https://image.tmdb.org/t/p/"
+        }
+    },
+    "db": {},
+    "html": {
+        "dir": "html/",
+        "file": "index.html",
+        "srcDir": "app/pug/",
+        "srcFile": "app.pug",
+        "watch": [
+            "app/pug/**/*.pug",
+            "!app/pug/favicon.pug"
+        ]
+    },
+    "css": {
+        "dir": "css/",
+        "file": "build.css",
+        "srcDir": "app/scss/",
+        "vars": {
+            "theme": {
+                "primary": "#8B026C",
+                "secondary": "#DC01A9",
+                "warning": "#EF473A",
+                "dark-gray": "#666666",
+                "light-gray": "#BDBDBD"
+            },
+            "light": "#ffffff !default",
+            "stable": "#f8f8f8 !default",
+            "positive": "$theme-primary !default",
+            "calm": "$theme-secondary !default",
+            "balanced": "#17A05E !default",
+            "energized": "#ffc900 !default",
+            "assertive": "$theme-warning !default",
+            "royal": "#886aea !default",
+            "dark": "$theme-dark-gray !default",
+            "ionicons-font-path": "'../fonts' !default",
+            "screen": {
+                "xl": "1500px",
+                "lg": "1200px",
+                "md": "992px",
+                "sm": "768px",
+                "xs": "480px"
+            },
+            "grid": {
+                "responsive": {
+                    "sm-break": "$screen-sm",
+                    "md-break": "$screen-md",
+                    "lg-break": "$screen-lg"
+                }
+            },
+            "main-color": "$theme-secondary !default",
+            "icons-font-size": "24px !default"
+        },
+        "libraries": [
+            "node_modules/ionic-sdk/scss/ionic.scss",
+            "node_modules/ng-material-floating-button/mfb/src/mfb.scss"
+        ],
+        "build": [
+            "build/css/libraries.css",
+            "node_modules/video.js/dist/video-js.css",
+            "node_modules/videojs-chromecast/dist/videojs-chromecast.css",
+            "build/css/layout/**/*.css",
+            "build/css/directive/**/*.css",
+            "build/css/state/**/*.css",
+            "build/css/page/**/*.css",
+            "build/css/modal/**/*.css"
+        ],
+        "watch": [
+            "app/scss/**/*.scss",
+            "!app/scss/libraries.scss",
+            "!app/scss/_variables.scss"
+        ]
+    },
+    "js": {
+        "dir": "js/",
+        "file": "build.js",
+        "srcDir": "app/ts/",
+        "libraries": [
+            "node_modules/jquery/dist/jquery.js",
+            "node_modules/ionic-sdk/release/js/ionic.bundle.js",
+            "node_modules/ng-cordova/dist/ng-cordova.js",
+            "node_modules/firebase/firebase.js",
+            "node_modules/angularfire/dist/angularfire.js",
+            "app/js/**/*.js",
+            "node_modules/jssha/src/sha.js",
+            "node_modules/ng-cordova-oauth/dist/ng-cordova-oauth.js",
+            "node_modules/angulartics/dist/angulartics.min.js",
+            "node_modules/angulartics-google-analytics/dist/angulartics-ga.min.js",
+            "node_modules/ng-material-floating-button/src/mfb-directive.js",
+            "node_modules/clipboard/dist/clipboard.js"
+        ],
+        "build": [
+            "build/js/app.js",
+            "build/js/resolver/**/*.js",
+            "build/js/platform.js",
+            "build/js/run.js",
+            "build/js/router.js",
+            "build/js/config.js",
+            "build/js/filter/**/*.js",
+            "build/js/directive/**/*.js",
+            "build/js/service/**/*.js",
+            "build/js/state/**/*.js",
+            "build/js/page/**/*.js"
+        ],
+        "watch": [
+            "app/ts/**/*.ts"
+        ]
+    },
+    "font": {
+        "dir": "fonts/",
+        "watch": [
+            "node_modules/ionic-sdk/release/fonts/**"
+        ]
+    },
+    "img": {
+        "dir": "img/",
+        "favicon": "resources/icon.png",
+        "watch": [
+            "resources/**"
+        ]
+    },
+    "extension": {
+        "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArwabV0/REb7ptgry22fMSK+sVKSyCF3yvInqN6/ssF7uY10tq1ScKJvk29ynzCu2tptj6jwfCAyOw6rJQuxmscjZ54yc/tWmRgqFfFxB0AoOpeH9TD6jfVelmZJLedNhqbAhbvA5P7wZ4YRDxBmc02kTPoKOjWjnYvvH+P8WvjWuZancmHnF6ZJCUzhRcp9nDTJ6RTjPLLD7l1bXeAejPSWReVmuqCGF3YLT0GlWMmtsdgeLsXejsjZDgMdmWlW/R4g7vJDv7m6LhAJTJYBN6Y2knoAnaejRxHUV8XQRne34tWyvcfvHSEfYMoZjq6hioriLd0OAGQJ+AUa4hGIfiwIDAQAB",
+        "id": "jkmkhifmakamhiihlpdkbhgjfochfijf",
+        "version": "1.4.1",
+        "plugins": [
+            "ionic",
+            "firebase",
+            "ngCordovaOauth"
+        ],
+        "build": {
+            "popup": [
+                "node_modules/jquery/dist/jquery.js",
+                "node_modules/ionic-sdk/release/js/ionic.bundle.js",
+                "node_modules/ng-cordova/dist/ng-cordova.js",
+                "node_modules/firebase/firebase.js",
+                "node_modules/angularfire/dist/angularfire.js",
+                "node_modules/jssha/src/sha.js",
+                "node_modules/ng-cordova-oauth/dist/ng-cordova-oauth.js",
+                "app/js/**/*.js",
+                "extension/build/app.js",
+                "extension/build/platform.js",
+                "build/js/run.js",
+                "extension/build/router.js",
+                "build/js/config.js",
+                "build/js/filter/**/*.js",
+                "build/js/directive/**/*.js",
+                "build/js/service/**/*.js",
+                "build/js/state/**/*.js",
+                "extension/build/page/**/*.js"
+            ],
+            "background": [
+                "extension/build/config.js",
+                "node_modules/jquery/dist/jquery.js",
+                "node_modules/firebase/firebase.js",
+                "extension/build/backgroundService.js"
+            ]
+        },
+        "routes": [{
+            "state": "login",
+            "url": "/setup",
+            "templateUrl": "html/page/extensionSetup.html",
+            "controller": "Animadness.ExtensionSetupController",
+            "controllerAs": "ctrl"
+        }, {
+            "state": "connected",
+            "url": "/connected",
+            "templateUrl": "html/page/extensionConnected.html",
+            "controller": "Animadness.ExtensionConnectedController",
+            "controllerAs": "ctrl"
+        }],
+        "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'",
+        "permissions": [
+            "background",
+            "tabs",
+            "<all_urls>",
+            "storage"
+        ],
+        "externally_connectable": {
+            "matches": [
+                "*://*.animadness.net/*",
+                "*://*.animadness.dev/*"
+            ]
+        }
+    }
+}

@@ -1,0 +1,21 @@
+ion-modal-view.modal-socialPoster
+    ion-header-bar.bar-positive
+        h1.title Social Settings
+        a.button.button-icon.ion-checkmark-round(ng-click="closeSocialPoster()")
+    ion-content
+        ion-item.item-input.item-stacked-label
+            label.input-label Message
+            textarea(
+                ng-model='ctrl.message' 
+                required
+            )
+        ion-item.item-input.item-stacked-label
+            label.input-label Twitter
+            span.badge {{117 - ctrl.tweet.length}}
+            textarea(
+                ng-model='ctrl.tweet' 
+                ng-trim="false" 
+                minlength='10' 
+                maxlength="117" 
+                required
+            )

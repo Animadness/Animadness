@@ -1,0 +1,122 @@
+// IMPORTS
+@import "../variables";
+
+// PAGE STYLES
+.state-animeForm{
+    &>.scroll:first-of-type{
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    .ion-android-search {
+        color: #ccc;
+        padding-top: 15px;
+        &:hover {
+            color: $theme-secondary;
+            cursor: pointer;
+        }
+        &[disabled="disabled"]{
+            color: #ccc;
+            cursor: auto;
+        }
+    }
+    
+    #pictures {
+        height: 120px;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll {
+            height: 100px;
+            width: 100%;
+            white-space: nowrap;
+        }
+        .bubble {
+            position: relative;
+            display: inline-block;
+            height: 100px;
+            width: 100px;
+            border: 3px solid #fff;
+            background-size: cover;
+            background-position: center;
+            border-radius: 100%;
+            margin: 0 10px;
+            &:hover {
+                border-color: $theme-primary;
+                cursor: pointer;
+            }
+            &.active {
+                border-color: $theme-primary;
+            }
+            i.icon {
+                position: absolute;
+                height: 30px;
+                width: 30px;
+                line-height: 30px;
+                text-align: center;
+                color: #fff;
+                right: -5px;
+                top: 0px;
+                font-size: 22px;
+                background-color: $theme-primary;
+                border-radius: 100%;
+            }
+        }
+    }
+
+    #series, #fillers {
+        .item {
+            .ion-checkmark-circled {
+                color: #ccc;
+            }
+            &:hover, &.active {
+                h2, .icon {
+                    color: $theme-primary !important;
+                }   
+                cursor: pointer;
+            }
+            .badge {
+                right: 40px;
+            }
+        }
+    }
+    
+    .success {
+        .ion-checkmark-circled {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 100px;
+            color: $theme-primary;
+        }
+        p {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            color: #444;
+            width: 100%;
+            text-align: center;
+        }
+    }
+    
+
+    @media (max-width: $screen-xl) {
+
+    }
+
+    @media (max-width: $screen-lg) {
+
+    }
+
+    @media (max-width: $screen-md) {
+
+    }
+
+    @media (max-width: $screen-sm) {
+
+    }
+
+    @media (max-width: $screen-xs) {
+
+    }
+}

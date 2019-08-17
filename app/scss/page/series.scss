@@ -1,0 +1,351 @@
+// IMPORTS
+@import "../variables";
+
+#publisher {
+    position: absolute;
+    bottom:0px;
+    left: 0px;
+    width: 100%;
+    height: 65px;
+    text-align: center;
+    text-decoration: none;
+    color: #666;
+    padding: 0 95px 20px;
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 60%);
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 60%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 60%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+    .padding {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: -5px;
+        p {
+            color: #666;
+            display: inline-block;
+            margin: 0;
+            font-weight: bold;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 90%;
+            padding: 10px 0;
+        }
+        i {
+            color: #666;
+            font-size: 30px;
+            display: inline-block;
+            padding-left: 15px;
+        }
+        small {
+            display: block;
+            width: 100%;
+            color: #666;
+            font-size: 12px;
+            white-space: pre;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+        .padding {
+            p, i {
+                color: $theme-secondary;
+            }
+        }
+        small {
+            line-height: 10px;
+        }
+    }
+
+    @media (max-width: $screen-xs) {
+        height: 90px;
+        .padding {
+            p {
+                font-size: 10px;
+            }
+            i {
+                font-size: 20px;
+                position: absolute;
+                right: 90px;
+                bottom: 35px;
+            }
+        }
+        small {
+            font-size: 10px;
+        }
+    }
+}
+
+// PAGE STYLES
+.state-series{
+    #seasons {
+        height: 125px;
+        white-space: nowrap;
+        overflow: visible;
+        padding-left: 30px;
+        .scroll {
+            width: 100%;
+        }
+        .bubble {
+            display: inline-block;
+            margin: -75px 0 0 0;
+            width: 170px;
+            position: relative;
+            &:last-of-type {
+                margin-right: 30px;
+            }
+            span {
+                height: 45px;
+                width: 45px;
+                font-size: 20px;
+                background-color: #fff;
+                border-radius: 100%;
+                color: #666;
+                font-weight: 600;
+                text-align: center;
+                display: block;
+                line-height: 45px;
+                position: absolute;
+                top: 10px;
+                right: 15px;
+            }
+            .image {
+                margin: 0;
+                display: block;
+                height: 150px;
+                width: 150px;
+                border-radius: 100%;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                border: 3px solid #fff;
+                &.icon {
+                    text-indent: 5px;
+                    background-color: #999;
+                    color: #fff;
+                    font-size: 75px;
+                    text-align: center;
+                    line-height: 150px;
+                    &.ion-play {
+                        background-color: $theme-primary !important;
+                    }
+                }
+            }
+            h2 {
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-size: 18px;
+                color: #666;
+                font-weight: 500;
+                margin-top: 10px;
+                text-indent: -10px;
+            }
+            &:hover {
+                .image {
+                    cursor: pointer;
+                    border-color: $theme-secondary;
+                }
+                span {
+                    color: #fff;
+                    background-color: $theme-secondary;
+                }
+            }
+        }
+        &.playing {
+            margin-top: 15px;
+            .bubble {
+                margin-top: 0 !important;
+            }
+        }
+    }
+    #episodes {
+        padding: 0 15px;
+        max-width: 960px;
+        margin: -100px auto 0;
+        display: block;
+        transition: all 0.4 ease;
+        &.playing {
+            margin-top: 15px !important;
+        }
+    }
+    .card {
+        .item-divider {
+            color: #666 !important;
+        }
+        ion-list {
+            ion-item {
+                padding-left: 50px;
+                h2 {
+                    text-transform: capitalize;
+                }
+                .badge {
+                    &:first-of-type {
+                        top: 16px;
+                        left: 7px;
+                    }
+                    &:last-of-type {
+                        right: 50px;
+                    }
+                }
+            }
+        }
+    }
+
+    .banner {
+        height: 600px;
+        background-color: #000;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        transition: all ease 0.4s;
+        &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: ' ';
+            background: rgba(0, 0, 0, 0.65);
+        }
+        ion-scroll {
+            max-height: 500px;
+            overflow-x: hidden !important;
+            overflow-y: hidden !important;
+            a:not(.badge):first-of-type {
+                padding-top: 15px;
+            }
+        }
+        #support {
+            max-width: 960px;
+            margin: 0 auto;
+            display: block;
+            .provider {
+                img {
+                    width: 70%;
+                    display: block;
+                    margin: 0 auto;
+                    max-width: 450px;
+                }
+            }
+            .patreon {
+                padding: 15px 0;
+                img {
+                    width: 80%;
+                    margin: 0 auto;
+                    display: block;
+                    max-width: 450px;
+                }
+            }
+        }
+        .description {
+            bottom: 0;
+            max-width: 960px;
+            margin: 0 auto;
+            display: block;
+            z-index: 99;
+            padding: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+        }
+        .tags {
+            padding: 0  0 10px 0;
+            .badge {
+                text-decoration: none;
+                margin-left: 10px;
+                margin-bottom: 10px;
+                &:first-of-type {
+                    margin-left: 0px;
+                }
+            }
+        }
+        .approve {
+            padding: 15px 0;
+            .button {
+                color: #fff;
+                font-weight: normal;
+                &:not(:first-of-type) {
+                    margin-left: 15px;
+                }
+            }
+        }
+        a:not(.badge) {
+            text-decoration: none;
+            z-index: 99;
+            transition: all ease 0.4s;
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.8);
+                h2 {
+                    color: #000;
+                }
+            }
+        }  
+        h2 {
+            display: block;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+    }
+
+    .ion-eye {
+        &:hover {
+            color: $theme-secondary;
+        }
+    }
+
+    @media (max-width: $screen-xl) {
+
+    }
+
+    @media (max-width: $screen-lg) {
+
+    }
+
+    @media (max-width: $screen-md) {
+        .banner {
+            height: 500px;
+            ion-scroll {
+                max-height: 400px;
+            }
+        }
+        h2 {
+            font-size: 18px;
+        }
+    }
+
+    @media (max-width: $screen-sm) {
+        .banner {
+            height: 420px;
+            ion-scroll {
+                max-height: 300px;
+            }
+            .description {
+                padding: 15px;
+            }
+            img {
+                max-width: 250px;
+            }
+        }
+    }
+
+    @media (max-width: $screen-xs) {
+        .banner {
+            height: 300px;
+            ion-scroll {
+                max-height: 200px;
+            }
+            .description {
+                padding: 10px;
+            }
+            img {
+                min-width: 120px !important;
+                max-width: 120px;
+            }
+        }
+        #episodes {
+            padding: 0 5px;
+        }
+    }
+}

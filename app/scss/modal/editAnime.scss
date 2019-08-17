@@ -1,0 +1,43 @@
+// IMPORTS
+@import "../variables";
+
+// PAGE STYLES
+.modal-editAnime {
+    ion-content{
+        background-color: #fff;
+    }
+
+    .filler-toggle {
+        right: 50px;
+    }
+
+    .episodes {
+        .item:not(.item-divider) {
+            padding-left: 50px;
+            .badge {
+                top: 12px;
+                left: 7px;
+                right: auto;
+            }
+        }
+    }
+    @media (max-width: $screen-xl) {
+
+    }
+
+    @media (max-width: $screen-lg) {
+
+    }
+
+    @media (max-width: $screen-md) {
+
+    }
+
+    @media (max-width: $screen-sm) {
+
+    }
+
+    @media (max-width: $screen-xs) {
+
+    }
+}

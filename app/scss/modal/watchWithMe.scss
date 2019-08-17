@@ -1,0 +1,96 @@
+// IMPORTS
+@import "../variables";
+
+$bubble-size: 125px;
+
+// PAGE STYLES
+.modal-watchWithMe {
+    background-color: #ddd;
+    .banner {
+        position: relative;
+        background: $theme-primary;
+        color: #fff;
+        a.ion-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #fff;
+            font-size: 35px;
+        }
+        i {
+            display: block; 
+            margin: 15px auto;
+            text-align: center;
+            font-size: $bubble-size * 0.75;
+            height: $bubble-size;
+            width: $bubble-size;
+            line-height: $bubble-size;
+            background-color: #fff;
+            border-radius: 100%;
+            color: $theme-secondary;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
+        }
+        h2 {
+            color: #ddd;
+            padding: 10px 0 5px;
+        }
+        
+        p {
+            font-size: 16px;
+            max-width: 450px;
+        }
+    }
+    .share-wrapper {
+        display: block;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .info {
+        .item-toggle {
+            background-color: transparent;
+            border: none;
+            pointer-events: all;
+        }
+        a {
+            color: #444;
+            text-decoration: none;
+        }
+    }
+    
+    @media (max-width: $screen-xl) {
+
+    }
+
+    @media (max-width: $screen-lg) {
+
+    }
+
+    @media (max-width: $screen-md) {
+
+    }
+
+    @media (max-width: $screen-sm) {
+        $bubble-size: 100px;
+        .banner {
+            i {
+                font-size: $bubble-size * 0.75;
+                height: $bubble-size;
+                width: $bubble-size;
+                line-height: $bubble-size;
+            }
+            h2 {
+                text-align: center;
+            }
+            p {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+                padding: 5px;
+            }
+        }
+    }
+
+    @media (max-width: $screen-xs) {
+
+    }
+}

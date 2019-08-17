@@ -1,0 +1,63 @@
+ion-view(view-title='login' hide-nav-bar="true")
+    ion-content(class='state-login')
+        .banner
+            a.patreon(href='https://patreon.com/madnesslabs' target='_blank')
+                img(src="./img/patreon.png")
+                p Support us on
+            img.logo(src="./img/logo.svg" ui-sref="anime")
+            h1 Welcome to #{name}
+            p #{description}
+        .logins
+            h2 Login to Binge Watch
+            .row
+                .col-xs-12.col-sm-6.col-md-3
+                    a.button.button-block.icon-left.ion-social-google(ng-click="ctrl.login('google')") Google
+                .col-xs-12.col-sm-6.col-md-3    
+                    a.button.button-block.icon-left.ion-social-facebook(ng-click="ctrl.login('facebook')") Facebook
+                .col-xs-12.col-sm-6.col-md-3
+                    a.button.button-block.icon-left.ion-social-twitter(ng-click="ctrl.login('twitter')") Twitter
+                .col-xs-12.col-sm-6.col-md-3
+                    a.button.button-block.icon-left.ion-social-github(ng-click="ctrl.login('github')") Github
+        .pitch.row.middle-xs
+            .col-xs-12.col-md-6
+                .question.avatar
+            .col-xs-12.col-md-6
+                h2 Why Another Anime Site
+                p Well first off we should say that #{name} is actually older that most of the sites that you use regularly for streaming anime.  We started back in 2007, when things were all about MegaUpload and RapidShare links.  As many of you know, these sites shut down or became heavily policed and without the time and resources we were unable to host our own resources so the site went dead.  Then a couple months ago KissAnime stopped supporting ChromeCast on their video player (may have been an update to Chrome) so #{name} was spun back up as a way to cast anime.  This process was a tidious one that involved copying, pasting links from one site to another and every time you wanted to start a new episode you had to reconnect.  Needless to say, it was very frustrating so we took a new direction.
+        .how-it-works.row.reverse.middle-xs
+            .col-xs-12.col-md-6
+                .thief.avatar
+            .col-xs-12.col-md-6    
+                h2 How It Works
+                p 
+                    | Well erhmm... we still don't host any of the media, but we aren't out to piss off any of these wonderful people that are providing it either.  The goal of #{name} is in the tag line, we want to make it easier to binge watch anime.  As a fellow Otaku we know that the process of clicking through episodes is painful and without Chromecast you huddle around a tiny monitor.  We don't believe in making money from this media or this app in general, so we will NEVER HAVE ADS.  We will however give a shoutout to all of the great content creators that made this site possible and ask that you support Madness Labs via Patreon so we can keep the servers running.  So think of us as the Netflix of Anime, the series will all be completed so no waiting for new episodes, which will also give a reason to support the official sites.  Oh and if you are a developer or are looking to become one this project is  
+                    b
+                        a(href='https://github.com/MadnessLabs/#{name}' target='_blank') OPEN SOURCE on GitHub
+                    |  and we need your support as well to keep pumping out new features.
+        .get-started
+            h2 Get Started
+            .row
+                .col-xs-4
+                    .bubble
+                        span 1
+                        i.icon.ion-log-in
+                    h4 Login Socially
+                .col-xs-4
+                    .bubble
+                        span 2
+                        i.icon.ion-android-download
+                    h4 Setup Extension
+                .col-xs-4
+                    .bubble
+                        span 3
+                        i.icon.ion-eye
+                    h4 Watch Anime
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/M0h1-M1u6P0" frameborder="0" allowfullscreen></iframe>
+        .powered-by
+            h2 Powered by
+            p 
+                | This site was built with the 
+                a(href='https://github.com/MadnessLabs/MadnessEnjinCLI' target="_blank") Madness Enjin
+                br
+                | for Otakus by 
+                a(href='https://madnesslabs.net' target="_blank") Madness Labs

@@ -1,0 +1,95 @@
+ion-modal-view.modal-editAnime
+    ion-header-bar.bar-positive
+        a.button.button-icon.ion-refresh(ng-click='refreshInfo(series)')
+        h1.title Edit {{series.name}}
+        a.button.button-icon.ion-checkmark(ng-click="closeEditModal()")
+    ion-content
+        form(name='editAnimeForm' ng-submit='closeEditModal()' novalidate)
+            input(type='submit' ng-show='false')
+            ion-list
+                ion-item.item-input.item-stacked-label
+                    label.input-label Name
+                    input(
+                        type='text'
+                        ng-model='series.name'
+                    )
+                ion-item.item-input.item-stacked-label
+                    label.input-label Description
+                    input(
+                        type='text'
+                        ng-model='series.description'
+                    )
+                ion-item.item-input.item-stacked-label
+                    label.input-label Homepage
+                    input(
+                        type='text'
+                        ng-model='series.homepage'
+                    )
+                ion-item.item-input.item-stacked-label
+                    label.input-label Image
+                    input(
+                        type='text'
+                        ng-model='series.image'
+                    )
+                ion-item.item-input.item-stacked-label
+                    label.input-label Banner
+                    input(
+                        type='text'
+                        ng-model='series.banner'
+                    )
+                ion-item.item-input.item-stacked-label
+                    label.input-label TV ID
+                    input(
+                        type='number'
+                        ng-model='series.tvId'
+                    )
+                ion-item.item-input.item-stacked-label
+                    label.input-label Fillers
+                    input(
+                        type='text'
+                        ng-model='series.fillers'
+                    )
+                ion-item.item-divider Kissanime
+                ion-item.item-input.item-stacked-label
+                    label.input-label Sub
+                    input(
+                        type='text'
+                        ng-model='series.provider.kissanime.sub'
+                    )
+                ion-item.item-input.item-stacked-label
+                    label.input-label Dub
+                    input(
+                        type='text'
+                        ng-model='series.provider.kissanime.dub'
+                    )
+                ion-item.item-divider 9anime
+                ion-item.item-input.item-stacked-label
+                    label.input-label Sub
+                    input(
+                        type='text'
+                        ng-model='series.provider["9anime"].sub'
+                    )
+                ion-item.item-input.item-stacked-label
+                    label.input-label Dub
+                    input(
+                        type='text'
+                        ng-model='series.provider["9anime"].dub'
+                    )
+                div.episodes(
+                    ng-repeat='(key, season) in series.seasons track by key' 
+                    ng-if='countEpisodes(season)'
+                )
+                    ion-item.item-divider 
+                        h2 Season {{key}}
+                        span.badge Filler
+                    ion-item.item-input.item-icon-right(
+                        ng-repeat='episode in season.episodes track by $index'
+                        ng-if='episode.name.length'
+                    ) 
+                        span.badge {{episode.number}}
+                        input(type='text' ng-model='episode.name')
+                        i.icon.filler-toggle(ng-class='{"ion-toggle": episode.canon, "ion-toggle-filled": !episode.canon }' ng-click='episode.canon = !episode.canon')
+                        i.icon.ion-trash-a(ng-click='deleteEpisode(key, episode)')
+                ion-item.item-icon-right.assertive(ng-click='deleteAnime()')
+                    h2 Delete Anime
+                    i.icon.ion-trash-a

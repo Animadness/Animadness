@@ -1,0 +1,234 @@
+// IMPORTS
+@import "../variables";
+
+// PAGE STYLES
+.state-login{
+    .banner {
+        background: $theme-primary;
+        height: 360px;
+        padding: 30px 0;
+        position: relative;
+        .patreon {
+            position: absolute;
+            top: 0px;
+            right: 30px;
+            background-color: #fff;
+            padding: 10px 15px;
+            border-radius: 0 0 15px 15px;
+            text-decoration: none !important;
+            color: #444;
+            img {
+                width: 150px;
+            }
+            p {
+                text-decoration: none !important;
+                color: #444;
+                padding: 0;
+                margin: 0;
+                font-weight: bold;
+            }
+        }
+        img.logo {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            display: block;
+            width: 100%;
+            color: #fff;
+        }
+        p {
+            color: #fff;
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+    }
+
+    h2 {
+        padding:15px 0 0 0;
+        display: block;
+        width: 100%;
+        letter-spacing: 2px;
+    }
+
+    p {
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+
+    .avatar {
+        border-radius: 100%;
+        background-size: cover;
+        background-position: center;
+        border: 3px solid;
+        width: 250px;
+        height: 250px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .logins {
+        margin: 30px;
+        h2 {
+            text-align: center;
+        }
+        .ion-social-google:hover {
+            color: $assertive;
+        }
+        .ion-social-facebook:hover {
+            color: #3B5998;
+        }
+        .ion-social-twitter:hover {
+            color: #1DA1F2;
+        }
+        .ion-social-github:hover {
+            color: #333;
+        }
+    }
+
+    .pitch {
+        background-color: #fff;
+        padding: 30px;
+        .question {
+            border-color: #ccc;
+            background-image: url('../img/question.jpg');
+        }
+    }
+
+    .how-it-works {
+        padding: 30px;
+        .thief {
+            border-color: #fff;
+            background-image: url('../img/thief.jpg');
+        }
+    }
+
+    .get-started {
+        padding: 30px;
+        background-color: #fff;
+        .row:before {
+            width: 70%;
+            display: block;
+            margin: 0 auto -54px auto;
+            content: ' ';
+            border-bottom: 5px dotted #ccc;
+            clear: both;
+        }
+        h2 {
+            text-align: center;
+        }
+        .bubble {
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            background-color: #ccc;
+            position: relative;
+            span {
+                position: absolute;
+                height: 30px;
+                width: 30px;
+                border-radius: 100%;
+                background-color: $theme-primary;
+                color: #fff;
+                text-align: center;
+                font-size: 16px;
+                font-weight: bold;
+                line-height: 30px;
+            }
+            i.icon {
+                display: block;
+                margin: 0 auto;
+                font-size: 50px;
+                text-align: center;
+                height: 100px;
+                line-height: 100px;
+                color: #444;
+            }
+        }
+        h4 {
+            display:block;
+            text-align: center;
+        }
+
+        iframe {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+    }
+
+    .powered-by {
+        padding: 30px;
+        background-color: $theme-primary;
+        h2 {
+            text-align: center;
+            color: #fff;
+        }
+        p {
+            text-align: center;
+            color: #fff;
+        }
+        a {
+            color: $theme-secondary;
+            font-weight: bold;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    @media (max-width: $screen-xl) {
+
+    }
+
+    @media (max-width: $screen-lg) {
+
+    }
+
+    @media (max-width: $screen-md) {
+        .powered-by, .get-started, .pitch {
+            padding: 30px 15px;
+        }
+        h2 {
+            font-size: 20px;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: $screen-sm) {
+        .banner {
+            img.logo {
+                margin-top: 60px;
+                height: 160px;
+                width: 160px;
+            }
+            h1 {
+                font-size: 30px;
+            }
+        }
+    }
+
+    @media (max-width: $screen-xs) {
+        .banner {
+            img.logo {
+                margin-top: 60px;
+                height: 145px;
+                width: 145px;
+            }
+            h1 {
+                font-size: 30px;
+            }
+        }
+    }
+}

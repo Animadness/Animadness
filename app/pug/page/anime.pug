@@ -1,0 +1,59 @@
+ion-view(view-title='Anime')
+    guest-bar
+    ion-content.state-anime.has-button(ng-class='{"has-subheader": $root.guest}')
+        #reviewing(ng-show='$root.session.profile.role === "admin" && ctrl.review.length > 0')
+            h1 
+                | In Review
+            a.button.button-clear.icon.icon-right.ion-checkmark-circled(ng-click='ctrl.approveAll()') Approve All
+            #anime.row
+                .col-xs(ng-repeat='anime in ctrl.review | filter: ctrl.animeFilter')
+                    .bubble(
+                        ng-style='{backgroundImage: "url(" + anime.image + ")"}'
+                        ui-sref="series({seriesId: anime.$id, review: true})"
+                    )
+                        i.icon.ion-android-time(ng-if='anime.post && anime.post.blog')
+                    h2 {{anime.name}}
+        #blog
+            h1 What's New on Animadness
+            .card
+                .item.item-icon-right.whats-new(
+                    ng-click='expanded = !expanded'
+                    ng-class='{"item-text-wrap": expanded, "item-avatar": ctrl.post.image}'
+                )
+                    .image(ng-style='{"background-image": "url(" + ctrl.post.image + ")"}' ng-if="ctrl.post.image")
+                    h2 {{ctrl.post.title}}
+                    span.badge(ng-bind="ctrl.formatDate(ctrl.post.post_date) | date:'MM/dd/yyyy'")
+                    p.content(ng-bind-html='ctrl.post.content')
+                    i.icon(ng-class='{"ion-android-arrow-dropdown-circle": !expanded, "ion-android-arrow-dropup-circle": expanded}')
+                .item.item-icon-right(ui-sref='blog')
+                    | View All Blog Posts
+                    i.icon.ion-speakerphone
+        #anime.row
+            #search.col-xs-12      
+                .item.item-input.item-icon-right
+                    input(
+                        type='search'
+                        ng-model='ctrl.animeFilter.name'
+                        placeholder='Search Anime'
+                    )
+                    a.badge.badge-calm(
+                        ng-click='ctrl.setGenreFilter(false)' 
+                        ng-if='ctrl.genre'
+                    )
+                        | {{ctrl.genre}} &nbsp;
+                        i.ion-close-circled
+                    i.icon(ng-class='{"ion-search": !ctrl.animeFilter.name.length, "ion-close-circled": ctrl.animeFilter.name.length}' ng-click='ctrl.resetSearch()')
+            .col-xs(ng-repeat='anime in ctrl.anime | filter: ctrl.animeFilter')
+                .bubble(
+                    ng-style='{backgroundImage: "url(" + anime.image + ")"}'
+                    ui-sref="series({seriesId: anime.$id})"
+                )
+                h2 {{anime.name}}
+    button.theme-positive(
+        mfb-menu 
+        position='br' 
+        resting-icon='ion-plus-round' 
+        active-icon='ion-plus-round' 
+        ui-sref='animeForm'
+        ng-show='$root.session.profile.role === "admin"'
+    )

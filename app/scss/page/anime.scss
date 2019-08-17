@@ -1,0 +1,214 @@
+// IMPORTS
+@import "../variables";
+
+// PAGE STYLES
+.state-anime{
+    #blog {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        max-width: 660px;
+        width: 100%;
+        padding: 30px 0 0 0;
+        &:hover {
+            cursor: pointer;
+        }
+        h1 {
+            display: block;
+            width: 100%;
+            color: #999;
+            font-size: 24px;
+            text-align: center;
+        }
+        .item:last-of-type {
+            background-color: #eee;
+            color: #999;
+            font-weight: bold;
+        }
+        .whats-new 
+        {
+            h2 {
+                font-size: 28px;
+                color: $theme-primary;
+                text-indent: 10px;
+            }
+            .badge {
+                right: 45px;
+                top: 25px;
+            }
+            .content {
+                height: 25px;
+            }
+            &.item-text-wrap {
+                .content {
+                    height: auto;
+                }
+            }
+        }
+        .icon {
+            color: #999;
+        }
+        p {
+            color: #666;
+            text-indent: 10px;
+        }
+        .item:hover {
+            cursor: pointer;
+            color: $theme-secondary;
+            h2, i {
+                color: $theme-secondary;
+            }
+        }
+    }
+    #reviewing {
+        position: relative;
+        background-color: #999;
+        h1 {
+            padding: 30px 0 0 30px;
+            color: #fff;
+            font-size: 24px;
+        }
+        .button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            &:hover {
+                color: $theme-secondary;
+            }
+        }
+    }
+    #anime{
+        .col-xs {
+            min-width: 175px;
+            h2 {
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-size: 18px;
+                font-weight: 500;
+                margin-top: 10px;
+                color: #666;
+                text-transform: capitalize;
+            }
+            .bubble {
+                height: 150px;
+                width: 150px;
+                border-radius: 100%;
+                margin: 10px auto;
+                border: 3px solid #fff;
+                background-size: cover;
+                background-position: center;
+                position: relative;
+                .icon {
+                    height: 45px;
+                    width: 45px;
+                    font-size: 35px;
+                    background-color: #fff;
+                    border-radius: 100%;
+                    color: #666;
+                    font-weight: 600;
+                    text-align: center;
+                    display: block;
+                    line-height: 45px;
+                    position: absolute;
+                    top: -7px;
+                    right: -7px;
+                }
+                &:hover {
+                    cursor: pointer;
+                    border-color: $theme-secondary;
+                    .icon {
+                        color: #fff;
+                        background-color: $theme-secondary;
+                    }
+                }
+            }
+        }
+    }
+
+    #search {
+        ::-webkit-input-placeholder {
+            color: #666;
+            font-size: 16px;
+        }
+        :-moz-placeholder {
+            color: #666;
+            opacity:  1;
+            font-size: 16px;
+        }
+        ::-moz-placeholder {
+            color: #666;
+            opacity:  1;
+            font-size: 16px;
+        }
+        :-ms-input-placeholder {
+            color: #666;
+            font-size: 16px;
+        }
+        .item {
+            background-color: transparent;
+            max-width: 600px;
+            display: block;
+            margin: 15px auto;
+            border: none;
+            border-bottom: 2px solid #999;
+            .badge {
+                right: 45px;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            .icon {
+                color: #666;
+                -moz-transform: scale(-1, 1);
+                -webkit-transform: scale(-1, 1);
+                -o-transform: scale(-1, 1);
+                -ms-transform: scale(-1, 1);
+                transform: scale(-1, 1);
+            }
+            input {
+                color: $theme-secondary;
+                font-weight: bold;
+            }
+        }
+        .ion-close-circled:hover {
+            color: $theme-primary;
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: $screen-xl) {
+
+    }
+
+    @media (max-width: $screen-lg) {
+
+    }
+
+    @media (max-width: $screen-md) {
+        
+    }
+
+    @media (max-width: $screen-sm) {
+        #blog {
+            padding: 15px;
+            h1 {
+                font-size: 18px;
+            }
+            .whats-new {
+                h2 {
+                    margin-top: 10px;
+                    font-size: 16px;
+                }
+                .badge {
+                    top: 5px;
+                    right: 10px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: $screen-xs) {
+
+    }
+}
